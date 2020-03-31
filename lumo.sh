@@ -1,0 +1,1 @@
+lumo -c `clj -Spath` $@

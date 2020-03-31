@@ -1,4 +1,4 @@
 .cpcache
 .idea
-example-*.png
+*.png
 node_modules

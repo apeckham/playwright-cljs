@@ -1,1 +1,0 @@
-lumo -c `clj -Spath` run.cljs
