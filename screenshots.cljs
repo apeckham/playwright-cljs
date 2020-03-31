@@ -1,13 +1,13 @@
 (require '[kitchen-async.promise :as p]
-         'playwright)
+         '[playwright :refer [chromium firefox webkit]])
 
 (comment "https://github.com/microsoft/playwright#page-screenshot")
 
-(doseq [browser-type ["chromium" "firefox" "webkit"]]
-       (p/let [browser (.launch (aget playwright browser-type))
-               context (.newContext browser)
-               page (.newPage context)]
+(doseq [playwright-browser [chromium firefox webkit]]
+       (p/let [browser (.. playwright-browser launch)
+               context (.. browser newContext)
+               page (.. context newPage)]
               (p/do
-                (.goto page "http://whatsmyuseragent.org/")
-                (.screenshot page #js {:path (str "example-" browser-type ".png")})
-                (.close browser))))
+                (.. page (goto "http://whatsmyuseragent.org/"))
+                (.. page (screenshot #js {:path (str "example-" (.. playwright-browser name) ".png")}))
+                (.. browser close))))
