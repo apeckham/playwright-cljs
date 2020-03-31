@@ -1,6 +1,8 @@
 (require '[kitchen-async.promise :as p]
          '[playwright :refer [webkit devices]])
 
+(comment "https://github.com/microsoft/playwright#mobile-and-geolocation")
+
 (def iphone-11 (aget devices "iPhone 11 Pro"))
 
 (p/let [browser (.launch webkit)

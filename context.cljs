@@ -1,6 +1,8 @@
 (require '[kitchen-async.promise :as p]
          '[playwright :refer [firefox]])
 
+(comment "https://github.com/microsoft/playwright#evaluate-in-browser-context")
+
 (p/let [browser (.launch firefox)
         context (.newContext browser)
         page (.newPage context)
